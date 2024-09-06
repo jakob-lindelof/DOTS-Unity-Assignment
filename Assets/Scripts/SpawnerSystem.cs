@@ -12,7 +12,7 @@ public partial struct SpawnerSystem : ISystem
         {
             if (spawner.ValueRO.NextSpawnTime < SystemAPI.Time.ElapsedTime)
             {
-                for (int i = 0; i < 37; i++)
+                for (int i = 0; i < 37 ; i++)
                 {
                     Entity newEntity = state.EntityManager.Instantiate(spawner.ValueRO.EnemyPrefab);
                     float3 pos = new float3(
