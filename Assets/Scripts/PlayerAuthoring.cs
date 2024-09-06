@@ -15,8 +15,9 @@ public class PlayerAuthoring : MonoBehaviour
             Entity playerEntity = GetEntity(TransformUsageFlags.Dynamic);
 
             AddComponent<PlayerTag>(playerEntity);
-            AddComponent<PlayerMoveInput>(playerEntity);
-            AddComponent(playerEntity, new PlayerMoveSpeed
+            AddComponent<MoveInput>(playerEntity);
+            AddComponent<PlayerGenericInput>(playerEntity);
+            AddComponent(playerEntity, new MoveSpeed
             {
                 Value = authoring.MoveSpeed,
             });

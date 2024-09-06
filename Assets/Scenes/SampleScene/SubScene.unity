@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Prefab: {fileID: 3028494667681060008, guid: 99137e2b1bbdceb4eb07d5bdc885a87c, type: 3}
-  SpawnRate: 5
+  SpawnRate: 3
 --- !u!1001 &314020172
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -219,6 +219,14 @@ PrefabInstance:
     - target: {fileID: 5481112273628439430, guid: 2eef5923b2d59a14992aa363dd7439b6, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6540015689542689107, guid: 2eef5923b2d59a14992aa363dd7439b6, type: 3}
+      propertyPath: m_Color.g
+      value: 0.81942225
+      objectReference: {fileID: 0}
+    - target: {fileID: 6540015689542689107, guid: 2eef5923b2d59a14992aa363dd7439b6, type: 3}
+      propertyPath: m_Color.r
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

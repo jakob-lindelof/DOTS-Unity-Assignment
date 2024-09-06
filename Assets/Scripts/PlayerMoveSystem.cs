@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices;
 using Unity.Burst;
 using Unity.Entities;
 using Unity.Transforms;
@@ -17,6 +18,7 @@ public partial struct PlayerMoveSystem : ISystem
 
     }
 
+    [StructLayout(LayoutKind.Auto)]
     public partial struct PlayerMoveJob : IJobEntity
     {
         public float DeltaTime;

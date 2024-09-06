@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using Unity.Entities;
 using Unity.Mathematics;
 using UnityEngine;
@@ -18,12 +16,14 @@ public class EnemyAuthoring : MonoBehaviour
 
             AddComponent<EnemyTag>(enemyEntity);
             
-            AddComponent(enemyEntity, new EnemyMoveInput
+            AddComponent(enemyEntity, new EnemyGenericInput()
             {
-                Value = authoring.MoveDirection
+                GenericMoveInput = authoring.MoveDirection
             });
             
-            AddComponent(enemyEntity, new EnemyMoveSpeed
+            AddComponent<MoveInput>(enemyEntity);
+            
+            AddComponent(enemyEntity, new MoveSpeed()
             {
                 Value = authoring.MoveSpeed
             });

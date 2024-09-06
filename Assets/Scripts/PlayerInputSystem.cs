@@ -11,7 +11,7 @@ public partial class PlayerInputSystem : SystemBase
     protected override void OnCreate()
     {
         RequireForUpdate<PlayerTag>();
-        RequireForUpdate<PlayerMoveInput>();
+        RequireForUpdate<PlayerGenericInput>();
         InputActions = new GameActions();
     }
 
@@ -31,9 +31,13 @@ public partial class PlayerInputSystem : SystemBase
 
     protected override void OnUpdate()
     {
-        Vector2 moveInput = InputActions.Player.Move.ReadValue<Vector2>();
+        //Vector2 moveInput = InputActions.Player.Move.ReadValue<Vector2>();
 
-        SystemAPI.SetSingleton(new PlayerMoveInput { Value = moveInput });
+        foreach (RefRW<PlayerGenericInput> playerGenericInput in SystemAPI.Query<RefRW<PlayerGenericInput>>())
+        {
+            playerGenericInput.ValueRW.GenericMoveInput = InputActions.Player.Move.ReadValue<Vector2>();
+        }
+        //SystemAPI.SetSingleton(new PlayerGenericInput { GenericMoveInput = moveInput });
     }
 
     protected override void OnStopRunning()
