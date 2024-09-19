@@ -1,3 +1,4 @@
+using Unity.Burst;
 using Unity.Entities;
 using Unity.Mathematics;
 using UnityEngine;
@@ -7,6 +8,7 @@ public class SpawnerAuthoring : MonoBehaviour
     public GameObject Prefab;
     public float SpawnRate;
 
+    [BurstCompile]
     class SpawnerBaker : Baker<SpawnerAuthoring>
     {
         public override void Bake(SpawnerAuthoring authoring)

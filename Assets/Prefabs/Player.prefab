@@ -99,3 +99,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 5
   ProjectilePrefab: {fileID: 6548428369817673967, guid: 6c133f3503183eb4984b787deb4a9da4, type: 3}
+  ProjectileLifeTime: 2

@@ -1,12 +1,12 @@
+using Unity.Burst;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
-using UnityEngine;
-using Random = UnityEngine.Random;
 
 public partial struct SpawnerSystem : ISystem
 {
 
+    [BurstCompile]
     public void OnUpdate(ref SystemState state) {
         foreach(RefRW<Spawner> spawner in SystemAPI.Query<RefRW<Spawner>>())
         {

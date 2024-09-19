@@ -1,3 +1,4 @@
+using Unity.Burst;
 using Unity.Entities;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -8,6 +9,7 @@ public partial class PlayerInputSystem : SystemBase
     private GameActions InputActions;
     private Entity Player;
     
+    [BurstCompile]
     protected override void OnCreate()
     {
         RequireForUpdate<PlayerTag>();
@@ -15,6 +17,7 @@ public partial class PlayerInputSystem : SystemBase
         InputActions = new GameActions();
     }
 
+    [BurstCompile]
     protected override void OnStartRunning()
     {
         InputActions.Enable();
@@ -22,6 +25,7 @@ public partial class PlayerInputSystem : SystemBase
         Player = SystemAPI.GetSingletonEntity<PlayerTag>();
     }
 
+    [BurstCompile]
     private void OnShoot(InputAction.CallbackContext context)
     {
         if (!SystemAPI.Exists(Player)) return;
@@ -29,15 +33,13 @@ public partial class PlayerInputSystem : SystemBase
         SystemAPI.SetComponentEnabled<FireProjectileTag>(Player, true);
     }
 
+    [BurstCompile]
     protected override void OnUpdate()
     {
-        //Vector2 moveInput = InputActions.Player.Move.ReadValue<Vector2>();
-
         foreach (RefRW<PlayerGenericInput> playerGenericInput in SystemAPI.Query<RefRW<PlayerGenericInput>>())
         {
             playerGenericInput.ValueRW.GenericMoveInput = InputActions.Player.Move.ReadValue<Vector2>();
         }
-        //SystemAPI.SetSingleton(new PlayerGenericInput { GenericMoveInput = moveInput });
     }
 
     protected override void OnStopRunning()

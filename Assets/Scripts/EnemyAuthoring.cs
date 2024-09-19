@@ -1,3 +1,4 @@
+using Unity.Burst;
 using Unity.Entities;
 using Unity.Mathematics;
 using UnityEngine;
@@ -8,6 +9,9 @@ public class EnemyAuthoring : MonoBehaviour
 
     public float2 MoveDirection;
 
+    [SerializeField] private float lifetime;
+
+    [BurstCompile]
     class EnemyAuthoringBaker : Baker<EnemyAuthoring>
     {
         public override void Bake(EnemyAuthoring authoring)
@@ -28,6 +32,10 @@ public class EnemyAuthoring : MonoBehaviour
                 Value = authoring.MoveSpeed
             });
             
+            AddComponent(enemyEntity, new LifeTime
+            {
+                Value = authoring.lifetime
+            });
         }
     }
 }
